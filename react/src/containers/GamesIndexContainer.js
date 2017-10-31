@@ -47,14 +47,16 @@ class GamesIndexContainer extends Component {
     })
 
     return(
-      <div>
+      <div className="games-index">
         <h1>Games</h1>
-        {games}
         <Link to="/games">
           <button onClick={this.addNewGame}>
             New Game
           </button>
         </Link>
+        <div className="game-tiles">
+          {games}
+        </div>
       </div>
     )
   }

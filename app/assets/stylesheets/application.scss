@@ -41,6 +41,13 @@
   width: 540px;
 }
 
+.mini-row {
+  margin: auto;
+  display: flex;
+  height: 15px;
+  width: 135px;
+}
+
 .square {
   display: inline-block;
   height: 60px;
@@ -49,6 +56,16 @@
   font-size: 2em;
   text-align: center;
   line-height: 60px;
+}
+
+.mini-square {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+  font-size: .5em;
+  text-align: center;
+  line-height: 15px;
 }
 
 .label-square {
@@ -86,4 +103,18 @@
 .title {
   text-align: center;
   font-size: 1em;
+}
+
+.games-index {
+  width: 75%;
+}
+
+.game-tiles {
+  width: 100%;
+}
+
+.game-tile {
+  width: 200px;
+  margin: 50px;
+  padding: 20px;
 }
