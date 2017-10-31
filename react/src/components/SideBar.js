@@ -13,7 +13,9 @@ class SideBar extends Component {
     return(
       <div className="side-bar">
         <h1>Chess on Rails</h1>
-        <Link to="/">Home</Link>
+        <Link to="/">
+          Home
+        </Link>
       </div>
     )
   }
