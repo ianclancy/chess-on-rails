@@ -1,0 +1,89 @@
+// @import "*";
+
+.page-container {
+  display: flex;
+}
+
+.game-display {
+  width: 75%;
+}
+
+.side-bar {
+  width: 20%;
+  height: 540px;
+  background-color: #afb9c9;
+}
+
+.even-row .even-square {
+  background-color: #af7a2a;
+}
+
+.even-row .odd-square {
+  background-color: #d3c5af;
+}
+
+.odd-row .even-square {
+  background-color: #d3c5af;
+}
+
+.odd-row .odd-square {
+  background-color: #af7a2a;
+}
+
+.selected {
+  background-color: #c64a39 !important;
+}
+
+.row {
+  margin: auto;
+  display: flex;
+  height: 60px;
+  width: 540px;
+}
+
+.square {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  border: 1px solid black;
+  font-size: 2em;
+  text-align: center;
+  line-height: 60px;
+}
+
+.label-square {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 1.5em;
+}
+
+.board {
+  width: 65%;
+  display: inline-block;
+  height: 540px;
+}
+
+.captured-box {
+  float: right;
+  width: 30%;
+  height: 540px;
+  display: inline-block;
+  font-size: 2em;
+}
+
+.side-captured-box {
+  height: 270px;
+  border: 1px solid black;
+}
+
+.side-piece-captured-box {
+  width: 100%;
+  height: 19%;
+}
+
+.title {
+  text-align: center;
+  font-size: 1em;
+}
