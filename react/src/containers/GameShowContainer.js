@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Row from '../components/Row'
+import Board from '../components/Board'
 import CapturedBox from '../components/CapturedBox'
 
 class GameShowContainer extends Component {
@@ -26,7 +26,6 @@ class GameShowContainer extends Component {
   }
 
   getGameData() {
-    console.log("getGameData")
     fetch(`/api/v1/games/${this.state.gameId}`)
       .then(response => response.json())
       .then(json => {
@@ -82,15 +81,12 @@ class GameShowContainer extends Component {
 
     return(
       <div className="game-display">
-        <div className="board">
-          <Row className="even-row" row={8} {...sharedProps} />
-          <Row className="odd-row" row={7} {...sharedProps} />
-          <Row className="even-row" row={6} {...sharedProps} />
-          <Row className="odd-row" row={5} {...sharedProps} />
-          <Row className="even-row" row={4} {...sharedProps} />
-          <Row className="odd-row" row={3} {...sharedProps} />
-          <Row className="even-row" row={2} {...sharedProps} />
-          <Row className="odd-row" row={1} {...sharedProps} />
+        <div className="board-with-labels">
+          <Board
+            pieces={this.state.pieces}
+            selectedPieceId={this.state.selectedPieceId}
+            handleClick={this.squareClick}
+          />
           <div className="row">
             <div className="label-square"></div>
             <div className="label-square">a</div>

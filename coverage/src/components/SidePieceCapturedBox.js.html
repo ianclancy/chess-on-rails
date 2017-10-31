@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/GameTile.js</title>
+    <title>Code coverage report for src/components/SidePieceCapturedBox.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">src/components/</a> GameTile.js
+      <a href="../../index.html">all files</a> / <a href="index.html">src/components/</a> SidePieceCapturedBox.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">58.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/9</span>
+        <span class='fraction'>7/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>1/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
+        <span class="strong">42.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/5</span>
+        <span class='fraction'>3/7</span>
       </div>
       <div class='fl pad1y'>
         <span class="strong">1 branch</span>
@@ -45,7 +45,7 @@
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -62,10 +62,22 @@
 13
 14
 15
-16</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+16
+17
+18
+19
+20
+21</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -75,22 +87,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { Link } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
 &nbsp;
-const GameTile = <span class="fstat-no" title="function not covered" >props =&gt; {</span>
+const SidePieceCapturedBox = <span class="fstat-no" title="function not covered" >props =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  l</span>et pieces = props.sideCapturedPieces.filter(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >p</span></span>iece =&gt; piece.type == props.pieceType)
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  l</span>et symbols = pieces.map(<span class="fstat-no" title="function not covered" >piece =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    r</span>eturn(
+      piece.symbol
+    )
+  })
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  r</span>eturn(
-    &lt;div className="column"&gt;
-      &lt;Link to={`/games/${props.game.id}`}&gt;
-        &lt;h3&gt;{props.game.start_date}&lt;/h3&gt;
-      &lt;/Link&gt;
+    &lt;div className="side-piece-captured-box"&gt;
+      {symbols}
     &lt;/div&gt;
   )
 }
 &nbsp;
-export default GameTile
+export default SidePieceCapturedBox
 &nbsp;
 &nbsp;</pre></td></tr>
 </table></pre>
