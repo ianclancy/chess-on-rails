@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import Board from '../components/Board'
-import CapturedBox from '../components/CapturedBox'
+import React, { Component } from 'react';
+import Board from '../components/Board';
+import CapturedBox from '../components/CapturedBox';
 
 class GameShowContainer extends Component {
   constructor(props) {
@@ -11,18 +11,19 @@ class GameShowContainer extends Component {
       pieces: [],
       selectedPieceId: null,
       recentMove: {}
-    }
-    this.getGameData = this.getGameData.bind(this)
-    this.squareClick = this.squareClick.bind(this)
-    this.addNewMove = this.addNewMove.bind(this)
+    };
+    this.getGameData = this.getGameData.bind(this);
+    this.squareClick = this.squareClick.bind(this);
+    this.addNewMove = this.addNewMove.bind(this);
+    this.capitalizeFirstLetter = this.capitalizeFirstLetter.bind(this)
   }
 
   componentDidMount() {
-    this.getGameData()
+    this.getGameData();
   }
 
   componentDidUpdate() {
-    this.getGameData()
+    this.getGameData();
   }
 
   getGameData() {
@@ -33,9 +34,9 @@ class GameShowContainer extends Component {
           this.setState({
             gameData: json,
             pieces: json.pieces
-          })
+          });
         }
-      })
+      });
   }
 
   addNewMove(movePayload) {
@@ -45,17 +46,21 @@ class GameShowContainer extends Component {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin'
     })
-      .then(this.setState({ recentMove: movePayload }))
+      .then(this.setState({ recentMove: movePayload }));
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   squareClick(event) {
-    event.preventDefault()
-    let clickedPiece = null
+    event.preventDefault();
+    let clickedPiece = null;
     this.state.pieces.forEach(piece => {
       if (`${piece.row}${piece.column}` == event.target.id && piece.side == this.state.gameData.turn) {
-        clickedPiece = piece
+        clickedPiece = piece;
       }
-    })
+    });
 
     if (this.state.selectedPieceId != null) {
       this.addNewMove({
@@ -63,10 +68,10 @@ class GameShowContainer extends Component {
         piece_id: this.state.selectedPieceId,
         to_row: parseInt(event.target.id[0]),
         to_column: parseInt(event.target.id[1])
-      })
-      this.setState({ selectedPieceId: null })
+      });
+      this.setState({ selectedPieceId: null });
     } else if (clickedPiece) {
-      this.setState({ selectedPieceId: clickedPiece.id })
+      this.setState({ selectedPieceId: clickedPiece.id });
     }
   }
 
@@ -75,9 +80,23 @@ class GameShowContainer extends Component {
       pieces: this.state.pieces,
       selectedPieceId: this.state.selectedPieceId,
       handleClick: this.squareClick
+    };
+
+    let capturedPieces = this.state.pieces.filter(piece => piece.row == null);
+
+    let checkMessage = "";
+
+    let capitalizedTurn;
+
+    if (this.state.gameData.turn) {
+      capitalizedTurn = this.capitalizeFirstLetter(this.state.gameData.turn);
     }
 
-    let capturedPieces = this.state.pieces.filter(piece => piece.row == null)
+    if (this.state.gameData.check) {
+      checkMessage = "Check! ";
+    }
+
+    let message = `${checkMessage + capitalizedTurn} to move.`;
 
     return(
       <div className="game-display">
@@ -98,7 +117,9 @@ class GameShowContainer extends Component {
             <div className="label-square">g</div>
             <div className="label-square">h</div>
           </div>
-          <h5>turn: {this.state.gameData.turn}</h5>
+          <div className="move-message">
+            {message}
+          </div>
         </div>
         <div className="captured-box">
           <CapturedBox capturedPieces={capturedPieces}/>
