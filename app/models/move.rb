@@ -18,6 +18,54 @@ class Move < ApplicationRecord
     end
   end
 
+  def castle?
+    if piece.side == "white"
+      row = 1
+    else
+      row = 8
+    end
+    if piece.type == "King" && distance.abs == 2 && direction == "horizontal" && !piece.moved
+      if castle_type == "kingside"
+        rook = game.square_occupant(row, 8)
+        if rook.type == "Rook" && !rook.moved
+          return true
+        end
+      elsif castle_type == "queenside"
+        rook = game.square_occupant(row, 1)
+        empty = game.square_occupant(row, 2)
+        if rook.type == "Rook" && !rook.moved && empty.nil?
+          return true
+        end
+      end
+    end
+    false
+  end
+
+  def castle_rook
+    if piece.side == "white"
+      row = 1
+    else
+      row = 8
+    end
+    if castle_type == "kingside"
+      return game.square_occupant(row, 8)
+    elsif castle_type == "queenside"
+      return game.square_occupant(row, 1)
+    else
+      return nil
+    end
+  end
+
+  def castle_type
+    if distance == 2
+      return "kingside"
+    elsif distance == -2
+      return "queenside"
+    else
+      return nil
+    end
+  end
+
   def direction
     if vertical_change == 0
       return "horizontal"

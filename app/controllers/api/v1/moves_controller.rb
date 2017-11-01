@@ -15,6 +15,16 @@ class Api::V1::MovesController < ApplicationController
     if move.legal? && piece.legal_move?(move)
       move.save
 
+      if move.castle?
+        rook = move.castle_rook
+        if move.castle_type == "kingside"
+          rook.column = 6
+        elsif move.castle_type == "queenside"
+          rook.column = 4
+        end
+        rook.save
+      end
+
       if move.capture?
         captured_piece = move.to_occupant
         captured_piece.row = nil

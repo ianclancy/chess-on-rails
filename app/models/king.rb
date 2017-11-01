@@ -1,12 +1,12 @@
 class King < Piece
   def legal_move?(move)
-    if move.distance.abs == 1
+    if move.castle? && move.distance.abs == 2 || move.distance.abs == 1
       return true
     else
       return false
     end
   end
-  
+
   def symbol
     if side == "white"
       return "\u2654".encode('utf-8')
