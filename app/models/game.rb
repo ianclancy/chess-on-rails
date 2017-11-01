@@ -4,12 +4,14 @@ class Game < ApplicationRecord
 
   def black_in_check
     white_pieces.each do |piece|
-      move = Move.new(game_id: id, piece_id: piece.id, to_row: black_king.row, to_column: black_king.column)
-      if move.legal? && piece.legal_move?(move)
-        return true
+      if !piece.row.nil?
+        move = Move.new(game_id: id, piece_id: piece.id, to_row: black_king.row, to_column: black_king.column)
+        if move.legal? && piece.legal_move?(move)
+          return true
+        end
       end
     end
-    return false
+    false
   end
 
   def black_king
@@ -18,6 +20,10 @@ class Game < ApplicationRecord
 
   def black_pieces
     pieces.where(side: "black")
+  end
+
+  def square_occupant(row, column)
+    pieces.where(game_id: id, row: row, column: column)[0]
   end
 
   def switch_turn
