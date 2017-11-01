@@ -1,5 +1,15 @@
 // @import "*";
 
+body {
+  background-color: #C4D7F2;
+}
+
+.side-bar {
+  width: 20%;
+  height: 540px;
+  background-color: #776871;
+}
+
 .page-container {
   display: flex;
 }
@@ -8,26 +18,20 @@
   width: 75%;
 }
 
-.side-bar {
-  width: 20%;
-  height: 540px;
-  background-color: #afb9c9;
-}
-
 .even-row .even-square {
-  background-color: #af7a2a;
+  background-color: #91A8A4;
 }
 
 .even-row .odd-square {
-  background-color: #d3c5af;
+  background-color: #AFDEDC;
 }
 
 .odd-row .even-square {
-  background-color: #d3c5af;
+  background-color: #AFDEDC;
 }
 
 .odd-row .odd-square {
-  background-color: #af7a2a;
+  background-color: #91A8A4;
 }
 
 .selected {
@@ -82,12 +86,18 @@
   height: 540px;
 }
 
+.move-message {
+  text-align: center;
+  font-size: 1.5em;
+}
+
 .captured-box {
   float: right;
   width: 30%;
   height: 540px;
   display: inline-block;
   font-size: 2em;
+  background-color: #F0F7EE;
 }
 
 .side-captured-box {
