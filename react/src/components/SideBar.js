@@ -7,17 +7,37 @@ class SideBar extends Component {
     this.state = {
       user: ''
     }
+    this.addNewGame = this.addNewGame.bind(this)
+  }
+
+  addNewGame() {
+    let gamePayload = { turn: "white" }
+    fetch('/api/v1/games', {
+      method: 'POST',
+      body: JSON.stringify(gamePayload),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin'
+    })
   }
 
   render() {
     return(
       <div className="side-bar">
         <h1>Chess on Rails</h1>
-        <Link to="/">
-          <div>
-            Home
-          </div>
-        </Link>
+        <div className="side-bar-links">
+          <Link to="/">
+            <div className="side-bar-link">
+              Home
+            </div>
+          </Link>
+          <Link to="/games">
+            <div className="side-bar-link" onClick={this.addNewGame}>
+              New Game
+            </div>
+          </Link>
+        </div>
       </div>
     )
   }
