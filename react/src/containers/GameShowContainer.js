@@ -54,22 +54,24 @@ class GameShowContainer extends Component {
   squareClick(event) {
     event.preventDefault();
     let clickedPiece = null;
-    this.state.pieces.forEach(piece => {
-      if (`${piece.row}${piece.column}` == event.target.id && piece.side == this.state.gameData.turn) {
-        clickedPiece = piece;
-      }
-    });
-
-    if (this.state.selectedPieceId != null) {
-      this.addNewMove({
-        game_id: this.state.gameId,
-        piece_id: this.state.selectedPieceId,
-        to_row: parseInt(event.target.id[0]),
-        to_column: parseInt(event.target.id[1])
+    if (!this.state.gameData.checkmate) {
+      this.state.pieces.forEach(piece => {
+        if (`${piece.row}${piece.column}` == event.target.id && piece.side == this.state.gameData.turn) {
+          clickedPiece = piece;
+        }
       });
-      this.setState({ selectedPieceId: null });
-    } else if (clickedPiece) {
-      this.setState({ selectedPieceId: clickedPiece.id });
+
+      if (this.state.selectedPieceId != null) {
+        this.addNewMove({
+          game_id: this.state.gameId,
+          piece_id: this.state.selectedPieceId,
+          to_row: parseInt(event.target.id[0]),
+          to_column: parseInt(event.target.id[1])
+        });
+        this.setState({ selectedPieceId: null });
+      } else if (clickedPiece) {
+        this.setState({ selectedPieceId: clickedPiece.id });
+      }
     }
   }
 
