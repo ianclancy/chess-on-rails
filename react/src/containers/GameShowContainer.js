@@ -22,10 +22,6 @@ class GameShowContainer extends Component {
     this.getGameData();
   }
 
-  componentDidUpdate() {
-    this.getGameData();
-  }
-
   getGameData() {
     fetch(`/api/v1/games/${this.state.gameId}`)
       .then(response => response.json())
@@ -46,7 +42,9 @@ class GameShowContainer extends Component {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin'
     })
-      .then(this.setState({ recentMove: movePayload }));
+      .then(() => {
+        this.getGameData()
+      })
   }
 
   capitalizeFirstLetter(string) {
@@ -84,19 +82,25 @@ class GameShowContainer extends Component {
 
     let capturedPieces = this.state.pieces.filter(piece => piece.row == null);
 
-    let checkMessage = "";
-
+    let message;
     let capitalizedTurn;
+    let capitalizedNotTurn;
 
-    if (this.state.gameData.turn) {
-      capitalizedTurn = this.capitalizeFirstLetter(this.state.gameData.turn);
+    if (this.state.gameData.turn && this.state.gameData.turn == "white") {
+      capitalizedTurn = "White";
+      capitalizedNotTurn = "Black";
+    } else {
+      capitalizedTurn = "Black";
+      capitalizedNotTurn = "White";
     }
 
-    if (this.state.gameData.check) {
-      checkMessage = "Check! ";
+    if (this.state.gameData.checkmate) {
+      message = `Checkmate! ${capitalizedNotTurn} wins.`
+    } else if (this.state.gameData.check) {
+      message = `Check! ${capitalizedTurn} to move.`;
+    } else {
+      message = `${capitalizedTurn} to move.`
     }
-
-    let message = `${checkMessage + capitalizedTurn} to move.`;
 
     return(
       <div className="game-display">

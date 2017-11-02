@@ -14,7 +14,9 @@ class SideBar extends Component {
       <div className="side-bar">
         <h1>Chess on Rails</h1>
         <Link to="/">
-          Home
+          <div>
+            Home
+          </div>
         </Link>
       </div>
     )

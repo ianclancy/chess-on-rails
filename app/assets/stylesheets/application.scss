@@ -1,13 +1,14 @@
 // @import "*";
 
 body {
-  background-color: #C4D7F2;
+  background-color: #494956;
 }
 
 .side-bar {
   width: 20%;
   height: 540px;
-  background-color: #776871;
+  background-color: #17171c;
+  color: #eff0ff;
 }
 
 .page-container {
@@ -19,19 +20,19 @@ body {
 }
 
 .even-row .even-square {
-  background-color: #91A8A4;
+  background-color: #955959;
 }
 
 .even-row .odd-square {
-  background-color: #AFDEDC;
+  background-color: #eed3d3;
 }
 
 .odd-row .even-square {
-  background-color: #AFDEDC;
+  background-color: #eed3d3;
 }
 
 .odd-row .odd-square {
-  background-color: #91A8A4;
+  background-color: #955959;
 }
 
 .selected {
@@ -78,17 +79,20 @@ body {
   text-align: center;
   line-height: 60px;
   font-size: 1.5em;
+  color: #eff0ff;
 }
 
 .board-with-labels {
   width: 65%;
   display: inline-block;
   height: 540px;
+  margin: 0px 22px;
 }
 
 .move-message {
   text-align: center;
   font-size: 1.5em;
+  color: #eff0ff;
 }
 
 .captured-box {
@@ -97,12 +101,12 @@ body {
   height: 540px;
   display: inline-block;
   font-size: 2em;
-  background-color: #F0F7EE;
 }
 
 .side-captured-box {
   height: 270px;
   border: 1px solid black;
+  background-color: #eff0ff;
 }
 
 .side-piece-captured-box {
