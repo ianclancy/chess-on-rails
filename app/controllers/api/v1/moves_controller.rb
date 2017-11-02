@@ -6,9 +6,7 @@ class Api::V1::MovesController < ApplicationController
   end
 
   def create
-    body = request.body.read
-    parsed_body = JSON.parse(body)
-    move = Move.new(parsed_body)
+    move = Move.new(JSON.parse(request.body.read))
     piece = move.piece
     game = move.game
 
