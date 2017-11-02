@@ -6,7 +6,8 @@ class GamesIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      games: []
+      games: [],
+      newGameId: null
     }
     this.getGames = this.getGames.bind(this)
     this.addNewGame = this.addNewGame.bind(this)
@@ -20,7 +21,7 @@ class GamesIndexContainer extends Component {
     fetch('/api/v1/games')
       .then(response => response.json())
       .then(json => {
-        this.setState({ games: json })
+        this.setState({ games: json, newGameId: json[0].id })
       })
   }
 
@@ -33,6 +34,9 @@ class GamesIndexContainer extends Component {
         'Content-Type': 'application/json'
       },
       credentials: 'same-origin'
+    })
+    .then(() => {
+      this.getGames()
     })
   }
 
@@ -48,12 +52,6 @@ class GamesIndexContainer extends Component {
 
     return(
       <div className="games-index">
-        <h1>Games</h1>
-        <Link to="/games">
-          <button onClick={this.addNewGame}>
-            New Game
-          </button>
-        </Link>
         <div className="game-tiles">
           {games}
         </div>

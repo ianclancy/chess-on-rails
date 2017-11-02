@@ -5,6 +5,6 @@ class GameSerializer < ActiveModel::Serializer
   has_many :pieces
 
   def start_date
-    object.created_at.strftime("%B %-d, %Y - %l:%M%P")
+    object.updated_at.strftime("%B %-d, %Y")
   end
 end

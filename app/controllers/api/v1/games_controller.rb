@@ -2,7 +2,7 @@ class Api::V1::GamesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render json: Game.all
+    render json: Game.order(updated_at: :desc)
   end
 
   def show

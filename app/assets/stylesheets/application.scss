@@ -4,10 +4,18 @@ body {
   background-color: #494956;
 }
 
+a {
+  text-decoration: none;
+}
+
 .side-bar {
   width: 20%;
   height: 540px;
   background-color: #17171c;
+  color: #eff0ff;
+}
+
+.side-bar-link {
   color: #eff0ff;
 }
 
@@ -39,6 +47,10 @@ body {
   background-color: #c64a39 !important;
 }
 
+.mini-board {
+  color: black;
+}
+
 .row {
   margin: auto;
   display: flex;
@@ -49,8 +61,8 @@ body {
 .mini-row {
   margin: auto;
   display: flex;
-  height: 15px;
-  width: 135px;
+  height: 25px;
+  width: 225px;
 }
 
 .square {
@@ -65,12 +77,12 @@ body {
 
 .mini-square {
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 25px;
+  width: 25px;
   border: 1px solid black;
   font-size: .5em;
   text-align: center;
-  line-height: 15px;
+  line-height: 25px;
 }
 
 .label-square {
@@ -128,7 +140,14 @@ body {
 }
 
 .game-tile {
+  display: inline-block;
   width: 200px;
-  margin: 50px;
-  padding: 20px;
+  margin: 15px 55px;
+  text-align: center;
+}
+
+.game-title {
+  color: #eff0ff;
+  font-size: 1.5em;
+  margin: 10px;
 }

@@ -6,7 +6,7 @@ const GameTile = props => {
   return(
     <div className="game-tile">
       <Link to={`/games/${props.game.id}`}>
-        <h3>{props.game.start_date}</h3>
+        <div className="game-title">{props.game.start_date}</div>
         <MiniBoard
           pieces={props.game.pieces}
         />
