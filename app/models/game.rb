@@ -92,10 +92,10 @@ class Game < ApplicationRecord
     end
   end
 
-  def opponent_can_attack(row, column)
+  def opponent_can_attack(coordinates)
     pieces.where(side: not_turn).each do |piece|
       if !piece.row.nil?
-        move = Move.new(game_id: id, piece_id: piece.id, to_row: row, to_column: column)
+        move = Move.new(game_id: id, piece_id: piece.id, to_row: coordinates[0], to_column: coordinates[1])
         if !move.invalid_direction? && !move.blocked? && piece.legal_move?(move)
           return true
         end
