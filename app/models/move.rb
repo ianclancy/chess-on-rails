@@ -19,20 +19,15 @@ class Move < ApplicationRecord
   end
 
   def castle?
-    if piece.side == "white"
-      row = 1
-    else
-      row = 8
-    end
-    if piece.type == "King" && distance.abs == 2 && direction == "horizontal" && !piece.moved
+    if !game.check && piece.type == "King" && distance.abs == 2 && direction == "horizontal" && !piece.moved && !game.opponent_can_attack(castle_empty_space)
       if castle_type == "kingside"
-        rook = game.square_occupant(row, 8)
+        rook = game.square_occupant(castle_row, 8)
         if rook.type == "Rook" && !rook.moved
           return true
         end
       elsif castle_type == "queenside"
-        rook = game.square_occupant(row, 1)
-        empty = game.square_occupant(row, 2)
+        rook = game.square_occupant(castle_row, 1)
+        empty = game.square_occupant(castle_row, 2)
         if rook.type == "Rook" && !rook.moved && empty.nil?
           return true
         end
@@ -41,18 +36,29 @@ class Move < ApplicationRecord
     false
   end
 
-  def castle_rook
-    if piece.side == "white"
-      row = 1
-    else
-      row = 8
-    end
+  def castle_empty_space
     if castle_type == "kingside"
-      return game.square_occupant(row, 8)
+      return [castle_row, 6]
+    else
+      return [castle_row, 4]
+    end
+  end
+
+  def castle_rook
+    if castle_type == "kingside"
+      return game.square_occupant(castle_row, 8)
     elsif castle_type == "queenside"
-      return game.square_occupant(row, 1)
+      return game.square_occupant(castle_row, 1)
     else
       return nil
+    end
+  end
+
+  def castle_row
+    if piece.side == "white"
+      return 1
+    else
+      return 8
     end
   end
 
