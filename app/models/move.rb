@@ -22,13 +22,13 @@ class Move < ApplicationRecord
     if !game.check && piece.type == "King" && distance.abs == 2 && direction == "horizontal" && !piece.moved && !game.opponent_can_attack(castle_empty_space)
       if castle_type == "kingside"
         rook = game.square_occupant(castle_row, 8)
-        if rook.type == "Rook" && !rook.moved
+        if rook && rook.type == "Rook" && !rook.moved
           return true
         end
       elsif castle_type == "queenside"
         rook = game.square_occupant(castle_row, 1)
         empty = game.square_occupant(castle_row, 2)
-        if rook.type == "Rook" && !rook.moved && empty.nil?
+        if rook && rook.type == "Rook" && !rook.moved && empty.nil?
           return true
         end
       end

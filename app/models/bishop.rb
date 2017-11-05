@@ -9,9 +9,9 @@ class Bishop < Piece
 
   def symbol
     if side == "white"
-      return "\u2657".encode('utf-8')
+      return "\u2657".encode("utf-8")
     else
-      return "\u265D".encode('utf-8')
+      return "\u265D".encode("utf-8")
     end
   end
 end

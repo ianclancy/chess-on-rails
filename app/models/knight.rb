@@ -9,9 +9,9 @@ class Knight < Piece
 
   def symbol
     if side == "white"
-      return "\u2658".encode('utf-8')
+      return "\u2658".encode("utf-8")
     else
-      return "\u265E".encode('utf-8')
+      return "\u265E".encode("utf-8")
     end
   end
 end

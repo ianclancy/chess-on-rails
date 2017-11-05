@@ -16,9 +16,9 @@ class Pawn < Piece
 
   def symbol
     if side == "white"
-      return "\u2659".encode('utf-8')
+      return "\u2659".encode("utf-8")
     else
-      return "\u265F".encode('utf-8')
+      return "\u265F".encode("utf-8")
     end
   end
 end
