@@ -9,9 +9,9 @@ class Rook < Piece
 
   def symbol
     if side == "white"
-      return "\u2656".encode('utf-8')
+      return "\u2656".encode("utf-8")
     else
-      return "\u265C".encode('utf-8')
+      return "\u265C".encode("utf-8")
     end
   end
 end
