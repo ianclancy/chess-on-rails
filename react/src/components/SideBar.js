@@ -11,7 +11,7 @@ class SideBar extends Component {
   }
 
   addNewGame() {
-    let gamePayload = { turn: "white" }
+    let gamePayload = { turn: "white", user_id: 1 }
     fetch('/api/v1/games', {
       method: 'POST',
       body: JSON.stringify(gamePayload),
@@ -35,6 +35,11 @@ class SideBar extends Component {
           <Link to="/games">
             <div className="side-bar-link" onClick={this.addNewGame}>
               New Game
+            </div>
+          </Link>
+          <Link to="/signup">
+            <div className="side-bar-link">
+              Sign Up
             </div>
           </Link>
         </div>

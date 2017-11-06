@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Pawn, type: :model do
-  let(:game) { Game.create(turn: "white") }
+  let(:user) { User.create(name: "John", email: "john@test.com", password: "password", password_confirmation: "password") }
+  let(:game) { Game.create(turn: "white", user_id: user.id) }
   let(:white_pawn) { Pawn.create(game_id: game.id, side: "white", row: 2, column: 4, moved: false) }
   let(:black_pawn) { Pawn.create(game_id: game.id, side: "black", row: 3, column: 5, moved: false) }
   let(:moved_pawn) { Pawn.create(game_id: game.id, side: "white", row: 4, column: 1, moved: true) }
