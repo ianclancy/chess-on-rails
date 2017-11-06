@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :moves
       resources :pieces
       resources :symbols
+      resources :users
     end
   end
 

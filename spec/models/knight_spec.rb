@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Knight, type: :model do
-  let(:white_game) { Game.create(turn: "white") }
-  let(:black_game) { Game.create(turn: "black") }
+  let(:user) { User.create(name: "John", email: "john@test.com", password: "password", password_confirmation: "password") }
+  let(:white_game) { Game.create(turn: "white", user_id: user.id) }
+  let(:black_game) { Game.create(turn: "black", user_id: user.id) }
   let(:white_knight) { Knight.create(game_id: white_game.id, side: "white", row: 1, column: 2, moved: false) }
   let(:black_knight) { Knight.create(game_id: black_game.id, side: "black", row: 8, column: 7, moved: false) }
   let(:legal_move_1) { Move.new(game_id: white_game.id, piece_id: white_knight.id, to_row: 3, to_column: 1) }

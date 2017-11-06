@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Rook, type: :model do
-  let(:game) { Game.create(turn: "white") }
+  let(:user) { User.create(name: "John", email: "john@test.com", password: "password", password_confirmation: "password") }
+  let(:game) { Game.create(turn: "white", user_id: user.id) }
   let(:white_rook) { Rook.create(game_id: game.id, side: "white", row: 1, column: 1, moved: false) }
   let(:black_rook) { Rook.create(game_id: game.id, side: "black", row: 8, column: 1, moved: false) }
   let(:legal_move_1) { Move.new(game_id: game.id, piece_id: white_rook.id, to_row: 1, to_column: 5) }
