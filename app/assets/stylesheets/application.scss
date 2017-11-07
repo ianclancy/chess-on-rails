@@ -151,3 +151,28 @@ a {
   font-size: 1.5em;
   margin: 10px;
 }
+
+.form-title {
+  color: #eff0ff;
+  text-align: center;
+}
+
+label {
+  color: #eff0ff;
+  font-size: 2.2em;
+  width: 25%;
+  display: inline-block;
+}
+
+form {
+  width: 70%;
+  margin: 0px 50px;
+}
+
+input {
+  margin: 30px;
+  display: inline-block;
+  height: 40px;
+  width: 65%;
+  font-size: 1.5em;
+}

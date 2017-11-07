@@ -4,8 +4,13 @@ Rails.application.routes.draw do
       resources :games
       resources :moves
       resources :pieces
+      resources :sessions
       resources :symbols
-      resources :users
+      resources :users do
+        collection do
+          resources :current
+        end
+      end
     end
   end
 

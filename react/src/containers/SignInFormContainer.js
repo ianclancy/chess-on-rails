@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
 
-class SignUpFormContainer extends Component {
+class SignInFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
       email: '',
-      password: '',
-      passwordConfirmation: ''
+      password: ''
     }
     this.handleChange = this.handleChange.bind(this)
-    this.addNewUser = this.addNewUser.bind(this)
+    this.addSession = this.addSession.bind(this)
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  addNewUser() {
+  addSession(event) {
     event.preventDefault()
-    let newUserPayload = {
-      name: this.state.name,
+    let sessionPayload = {
       email: this.state.email,
-      password: this.state.password,
-      password_confirmation: this.state.passwordConfirmation
+      password: this.state.password
     }
-    fetch('/api/v1/users', {
+    fetch('/api/v1/sessions', {
       method: 'POST',
-      body: JSON.stringify(newUserPayload),
+      body: JSON.stringify(sessionPayload),
       headers: {
         'Content-Type': 'application/json'
       },
@@ -37,15 +33,8 @@ class SignUpFormContainer extends Component {
 
   render() {
     return(
-      <form onSubmit={this.addNewUser}>
-        <h1 className="form-title">Sign Up</h1>
-        <label>Name</label>
-        <input
-          name="name"
-          type="text"
-          value={this.state.name}
-          onChange={this.handleChange}
-        />
+      <form onSubmit={this.addSession}>
+        <h1 className="form-title">Sign In</h1>
         <label>Email</label>
         <input
           name="email"
@@ -60,13 +49,6 @@ class SignUpFormContainer extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <label>Confirmation</label>
-        <input
-          name="passwordConfirmation"
-          type="password"
-          value={this.state.passwordConfirmation}
-          onChange={this.handleChange}
-        />
         <input
           className="submt-button"
           type="submit"
@@ -76,4 +58,4 @@ class SignUpFormContainer extends Component {
   }
 }
 
-export default SignUpFormContainer;
+export default SignInFormContainer;
