@@ -68,8 +68,9 @@ class SignUpFormContainer extends Component {
           onChange={this.handleChange}
         />
         <input
-          className="submt-button"
+          className="submit-button"
           type="submit"
+          value="Create Account"
         />
       </form>
     )

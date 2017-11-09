@@ -15,7 +15,7 @@ class GameShowContainer extends Component {
     this.getGameData = this.getGameData.bind(this);
     this.squareClick = this.squareClick.bind(this);
     this.addNewMove = this.addNewMove.bind(this);
-    this.capitalizeFirstLetter = this.capitalizeFirstLetter.bind(this)
+    this.capitalizeFirstLetter = this.capitalizeFirstLetter.bind(this);
   }
 
   componentDidMount() {
