@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 
 class SignInFormContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       email: '',
       password: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.addSession = this.addSession.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.addSession = this.addSession.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   addSession(event) {
-    event.preventDefault()
+    event.preventDefault();
     let sessionPayload = {
       email: this.state.email,
       password: this.state.password
@@ -29,6 +29,12 @@ class SignInFormContainer extends Component {
       },
       credentials: 'same-origin'
     })
+      .then(() => {
+        this.props.getCurrentUser()
+      })
+      .then(() => {
+        this.props.history.push("/")
+      })
   }
 
   render() {
@@ -50,7 +56,7 @@ class SignInFormContainer extends Component {
           onChange={this.handleChange}
         />
         <input
-          className="submt-button"
+          className="submit-button"
           type="submit"
         />
       </form>

@@ -15,6 +15,7 @@ class Api::V1::UsersController < ApplicationController
     user.password_confirmation = JSON.parse(request.body.read)["password_confirmation"]
     if user.valid?
       user.save
+      sign_in(user)
     else
       @error_messages = user.errors.full_messages
     end

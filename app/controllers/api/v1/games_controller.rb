@@ -43,5 +43,6 @@ class Api::V1::GamesController < ApplicationController
     Bishop.create(side: "black", row: 8, column: 6, moved: false, game_id: game.id)
     Knight.create(side: "black", row: 8, column: 7, moved: false, game_id: game.id)
     Rook.create(side: "black", row: 8, column: 8, moved: false, game_id: game.id)
+    render json: game.id
   end
 end

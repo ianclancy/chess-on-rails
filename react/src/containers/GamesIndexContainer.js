@@ -4,44 +4,15 @@ import GameTile from '../components/GameTile';
 
 class GamesIndexContainer extends Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      games: [],
-      newGameId: null
-    }
-    this.getGames = this.getGames.bind(this)
-    this.addNewGame = this.addNewGame.bind(this)
+    super(props);
   }
 
   componentDidMount() {
-    this.getGames()
-  }
-
-  getGames() {
-    fetch('/api/v1/games')
-      .then(response => response.json())
-      .then(json => {
-        this.setState({ games: json, newGameId: json[0].id })
-      })
-  }
-
-  addNewGame() {
-    let gamePayload = { turn: "white" }
-    fetch('/api/v1/games', {
-      method: 'POST',
-      body: JSON.stringify(gamePayload),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'same-origin'
-    })
-    .then(() => {
-      this.getGames()
-    })
+    this.props.getGames();
   }
 
   render() {
-    let games = this.state.games.map(game => {
+    let games = this.props.games.map(game => {
       return(
         <GameTile
           key={game.id}
