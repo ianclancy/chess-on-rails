@@ -1,5 +1,5 @@
 class MiniGameSerializer < ActiveModel::Serializer
-  attributes :id, :start_date
+  attributes :id, :start_date, :completed
 
   has_many :pieces, serializer: MiniPieceSerializer
 

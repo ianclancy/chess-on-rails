@@ -15,7 +15,7 @@ class SideBar extends Component {
 
   addNewGame(event) {
     event.preventDefault()
-    let gamePayload = { turn: "white", user_id: this.props.currentUser.id }
+    let gamePayload = { turn: "white", user_id: this.props.currentUser.id, completed: false }
     fetch("/api/v1/games", {
       method: "POST",
       body: JSON.stringify(gamePayload),
