@@ -1,5 +1,5 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :turn, :start_date, :pieces
+  attributes :id, :turn, :start_date, :checkmate
 
   belongs_to :user
   has_many :moves

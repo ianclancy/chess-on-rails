@@ -12,8 +12,6 @@ const Square = props => {
   let moveNewRow = null
   let moveNewColumn = null
 
-  console.log(moveNewRow)
-
   if (props.recentMoveData.move) {
     moveOldRow = props.recentMoveData.piece_old_row
     moveOldColumn = props.recentMoveData.piece_old_column

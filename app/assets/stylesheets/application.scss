@@ -1,5 +1,3 @@
-// @import "*";
-// @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Roboto:500');
 
 body {
@@ -11,6 +9,7 @@ a {
 }
 
 label {
+  font-family: "Roboto", sans-serif;
   color: #eff0ff;
   font-size: 1.8em;
   width: 20%;
@@ -23,6 +22,7 @@ form {
 }
 
 input {
+  font-family: "Roboto", sans-serif;
   margin: 23px;
   display: inline-block;
   height: 40px;
@@ -191,7 +191,7 @@ h1 {
 .game-tile {
   display: inline-block;
   width: 200px;
-  margin: 15px 55px;
+  margin: 5px 55px;
   text-align: center;
 }
 
@@ -203,15 +203,19 @@ h1 {
 }
 
 .form-title {
+  font-family: "Roboto", sans-serif;
   color: #eff0ff;
   text-align: center;
 }
 
 .submit-button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
   width: 85%;
-  background-color: #0f3d0d;
-  color: #eff0ff;
-  border: 0;
+  background-color: #eed3d3;
+  color: #494956;
+  border: 1px solid #17171c;
+  border-radius: 10px;
 }
 
 .user-greeting {
@@ -222,4 +226,31 @@ h1 {
 .app-title {
   font-family: 'Open Sans', sans-serif;
   font-size: 2em;
+}
+
+.game-type-buttons {
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+}
+
+.game-type-button {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  line-height: 50px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
+  border: 1px solid #17171c;
+  color: #494956;
+}
+
+.clicked-games-button {
+  background-color: #eed3d3;
+  color: #494956;
+}
+
+.unclicked-games-button {
+  color: #eff0ff;
 }
