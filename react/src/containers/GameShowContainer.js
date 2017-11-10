@@ -10,7 +10,7 @@ class GameShowContainer extends Component {
       gameId: this.props.match.params.id,
       pieces: [],
       selectedPieceId: null,
-      recentMove: {}
+      recentMoveData: {}
     };
     this.getGameData = this.getGameData.bind(this);
     this.squareClick = this.squareClick.bind(this);
@@ -42,6 +42,12 @@ class GameShowContainer extends Component {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin'
     })
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          recentMoveData: json,
+        })
+      })
       .then(() => {
         this.getGameData()
       })
@@ -76,12 +82,6 @@ class GameShowContainer extends Component {
   }
 
   render() {
-    let sharedProps = {
-      pieces: this.state.pieces,
-      selectedPieceId: this.state.selectedPieceId,
-      handleClick: this.squareClick
-    };
-
     let capturedPieces = this.state.pieces.filter(piece => piece.row == null);
 
     let message;
@@ -109,6 +109,7 @@ class GameShowContainer extends Component {
         <div className="board-with-labels">
           <Board
             pieces={this.state.pieces}
+            recentMoveData={this.state.recentMoveData}
             selectedPieceId={this.state.selectedPieceId}
             handleClick={this.squareClick}
           />

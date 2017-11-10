@@ -82,6 +82,14 @@ h1 {
   background-color: #c64a39 !important;
 }
 
+.moved {
+  background-color: #a3bbff !important;
+}
+
+.board {
+  cursor: default;
+}
+
 .mini-board {
   color: black;
 }
@@ -108,6 +116,10 @@ h1 {
   font-size: 2em;
   text-align: center;
   line-height: 60px;
+}
+
+.square:active {
+  background-color: #c64a39 !important;
 }
 
 .mini-square {
@@ -185,7 +197,7 @@ h1 {
 
 .game-title {
   color: #eff0ff;
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin: 10px;
   font-family: "Roboto", sans-serif;
 }
