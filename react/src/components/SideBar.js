@@ -36,7 +36,6 @@ class SideBar extends Component {
   }
 
   render() {
-    console.log(this.state.redirect)
     let currentUserName;
     if (this.props.currentUser) {
       currentUserName = this.props.currentUser.name;

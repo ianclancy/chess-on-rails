@@ -55,6 +55,7 @@ class Api::V1::MovesController < ApplicationController
         end
         game.update(turn: game.switch_turn)
         move.save
+        render json: {move: move, piece_old_row: piece_old_row, piece_old_column: piece_old_column}
       end
     end
   end

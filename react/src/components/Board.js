@@ -4,6 +4,7 @@ import Row from './Row'
 const Board = props => {
   let sharedProps = {
     pieces: props.pieces,
+    recentMoveData: props.recentMoveData,
     selectedPieceId: props.selectedPieceId,
     handleClick: props.handleClick
   }

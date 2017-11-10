@@ -4,6 +4,7 @@ import Square from './Square'
 const Row = props => {
   let sharedProps = {
     pieces: props.pieces,
+    recentMoveData: props.recentMoveData,
     selectedPieceId: props.selectedPieceId,
     handleClick: props.handleClick
   }
