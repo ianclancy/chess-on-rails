@@ -84,7 +84,9 @@ class App extends Component {
           <Route exact path="/sign-in" render={props => (
             <SignInFormContainer {...props} currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} />
           )}/>
-          <Route exact path="/sign-up" component={SignUpFormContainer} />
+          <Route exact path="/sign-up" render={props => (
+            <SignUpFormContainer {...props} currentUser={this.state.currentUser} getCurrentUser={this.getCurrentUser} />
+          )}/>
           <Route exact path="/games/:id" component={GameShowContainer} />
           <Route exact path="/users/:id" component={UserShowContainer} />
         </div>

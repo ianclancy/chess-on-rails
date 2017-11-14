@@ -16,8 +16,10 @@ class Api::V1::UsersController < ApplicationController
     if user.valid?
       user.save
       sign_in(user)
+      render json: user
     else
       @error_messages = user.errors.full_messages
+      render json: { errors: @error_messages }
     end
   end
 
